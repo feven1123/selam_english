@@ -1,9 +1,10 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
 interface Book {
   id: number;
@@ -19,6 +20,10 @@ export default function BooksPage() {
   const [search, setSearch] = useState('');
   const [category, setCategory] = useState('All');
   const [filteredBooks, setFilteredBooks] = useState<Book[]>([]);
+  const router = useRouter();
+
+  // Simulate login check (replace with real auth logic)
+  const isLoggedIn = !!localStorage.getItem('token');
 
   // Fetch books from API
   useEffect(() => {
@@ -30,7 +35,7 @@ export default function BooksPage() {
       } catch (err) {
         console.error('Error fetching books:', err);
       }
-    }
+    } 
     fetchBooks();
   }, []);
 
@@ -50,8 +55,15 @@ export default function BooksPage() {
     setFilteredBooks(temp);
   }, [books, search, category]);
 
-  // Get unique categories for filter dropdown
   const categories = ['All', ...Array.from(new Set(books.map((b) => b.category)))];
+
+  const handleReadBook = (id: number) => {
+    if (isLoggedIn) {
+      router.push(`/books/${id}`); // navigate to book detail if logged in
+    } else {
+      router.push('/login'); // redirect to login if not
+    }
+  };
 
   return (
     <>
@@ -113,7 +125,10 @@ export default function BooksPage() {
                     <h3 className="text-2xl font-bold text-green-700 mb-2">{book.title}</h3>
                     <p className="text-green-800 mb-2 font-medium">By {book.author}</p>
                     <p className="text-gray-700 mb-4">{book.description}</p>
-                    <button className="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-xl font-semibold transition">
+                    <button
+                      onClick={() => handleReadBook(book.id)}
+                      className="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-xl font-semibold transition"
+                    >
                       Read Now
                     </button>
                   </div>
