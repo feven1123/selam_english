@@ -68,7 +68,7 @@ export default function CoursesPage() {
             Free English Courses
           </h1>
           <p className="text-lg max-w-2xl mx-auto text-green-800">
-            Browse all courses added by the admin. Click "View Course" to sign in and start learning.
+            Browse all courses added by the admin. Click &quot;View Course&quot; to sign in and start learning.
           </p>
         </section>
 

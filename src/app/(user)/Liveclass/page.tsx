@@ -39,7 +39,7 @@ export default function LiveSessionsPage() {
             Upcoming Live Sessions
           </h1>
           <p className="text-lg max-w-2xl mx-auto text-green-800">
-            Join interactive live classes with our instructors. Click "Join Session" to participate.
+            Join interactive live classes with our instructors. Click &quot;Join Session&quot; to participate.
           </p>
         </section>
 

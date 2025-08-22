@@ -118,7 +118,7 @@ export default function AboutPage() {
                     height={96}
                     className="rounded-full mb-6 shadow-lg object-cover"
                   />
-                  <p className="text-green-900 italic mb-6 text-lg leading-relaxed">"{t.review}"</p>
+                  <p className="text-green-900 italic mb-6 text-lg leading-relaxed">&quot;{t.review}&quot;</p>
                   <h3 className="text-xl font-semibold text-green-800">{t.name}</h3>
                   <p className="text-green-700 text-sm">{t.role}</p>
                 </motion.div>
