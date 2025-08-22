@@ -1,15 +1,16 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 
 const testimonials = [
   {
     id: 1,
     name: 'Liya Abera',
     role: 'Student',
-    photo: '/images/testimonial1.jpg', // replace with actual image paths or use placeholder
+    photo: '/images/testimonial1.jpg',
     review:
-      "Selam English helped me gain confidence in speaking. The classes are interactive and the instructors are amazing!",
+      'Selam English helped me gain confidence in speaking. The classes are interactive and the instructors are amazing!',
   },
   {
     id: 2,
@@ -17,7 +18,7 @@ const testimonials = [
     role: 'Student',
     photo: '/images/testimonial2.jpg',
     review:
-      "The live sessions are really engaging. I improved my grammar and pronunciation faster than I expected.",
+      'The live sessions are really engaging. I improved my grammar and pronunciation faster than I expected.',
   },
   {
     id: 3,
@@ -25,7 +26,7 @@ const testimonials = [
     role: 'Student',
     photo: '/images/testimonial3.jpg',
     review:
-      "I love the flexible schedule and personalized lessons. It’s the best English learning platform I’ve tried.",
+      'I love the flexible schedule and personalized lessons. It’s the best English learning platform I’ve tried.',
   },
 ];
 
@@ -43,13 +44,16 @@ export default function Testimonials() {
               key={id}
               className="bg-green-50 rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-shadow duration-300 cursor-default flex flex-col items-center"
             >
-              <img
-                src={photo}
-                alt={`${name}'s photo`}
-                className="w-24 h-24 rounded-full object-cover mb-6 shadow-md"
-                loading="lazy"
-              />
-              <p className="text-green-900 italic mb-6 text-lg leading-relaxed">"{review}"</p>
+              <div className="w-24 h-24 mb-6 relative">
+                <Image
+                  src={photo}
+                  alt={`${name}'s photo`}
+                  fill
+                  className="rounded-full object-cover shadow-md"
+                  priority={false}
+                />
+              </div>
+              <p className="text-green-900 italic mb-6 text-lg leading-relaxed">{review}</p>
               <h3 className="text-xl font-semibold text-green-800">{name}</h3>
               <p className="text-green-700 text-sm">{role}</p>
             </div>
