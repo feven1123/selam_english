@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
 import bcrypt from 'bcryptjs';
+import { Prisma } from '@prisma/client'; // <-- import Prisma types
 
 export async function PUT(req: NextRequest) {
   try {
@@ -22,7 +23,7 @@ export async function PUT(req: NextRequest) {
       return NextResponse.json({ message: 'Current password is incorrect' }, { status: 400 });
     }
 
-    const updateData: any = {};
+    const updateData: Prisma.UserUpdateInput = {};
     if (email) updateData.email = email;
     if (newPassword) updateData.password = await bcrypt.hash(newPassword, 10);
 
