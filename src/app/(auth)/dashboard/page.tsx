@@ -136,7 +136,7 @@ export default function DashboardPage() {
         <CardContent className="space-y-2">
           <p>📌 You have 2 new assignments due this week</p>
           <p>🔥 You are on a 7-day streak, keep it up!</p>
-          <p>🎯 New course "Business English" has been added to your library</p>
+          <p>🎯 New course &quot;Business English&quot; has been added to your library</p>
         </CardContent>
       </Card>
     </div>
