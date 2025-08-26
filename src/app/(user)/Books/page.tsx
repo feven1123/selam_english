@@ -22,8 +22,13 @@ export default function BooksPage() {
   const [filteredBooks, setFilteredBooks] = useState<Book[]>([]);
   const router = useRouter();
 
-  // Simulate login check (replace with real auth logic)
-  const isLoggedIn = !!localStorage.getItem('token');
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    setIsLoggedIn(!!token);
+  }, []);
+  
 
   // Fetch books from API
   useEffect(() => {
